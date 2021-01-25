@@ -53,7 +53,20 @@ var KTLogin = function() {
 					KTUtil.btnRelease(formSubmitButton);
 				}, 2000);
  */
+var email = form.querySelector('[name="username"]').value;
+var password = form.querySelector('[name="password"]').value;
 console.log(form.querySelector('[name="username"]').value);
+firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in 
+    var user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ..
+  });
 
 
 				// Form Validation & Ajax Submission: https://formvalidation.io/guide/examples/using-ajax-to-submit-the-form
